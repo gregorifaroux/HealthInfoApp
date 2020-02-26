@@ -51,9 +51,9 @@ export const DrawerNavigator = () => (
   </Drawer.Navigator>
 );
 
-export const AppNavigator = () => (
+export const AppNavigator = ({ changeTheme }) => (
   <SafeAreaView style={{ flex: 1 }}>
-    <TopNavigationActionsShowcase />
+    <TopNavigationActionsShowcase changeTheme={changeTheme} />
     <Divider />
     <NavigationContainer ref={navigationRef}>
       <DrawerNavigator />

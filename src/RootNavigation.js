@@ -9,6 +9,6 @@ export function navigate(name, params) {
   navigationRef.current?.navigate(name, params);
 }
 
-export function toggle(...args) {
+export function toggle() {
   navigationRef.current?.dispatch(DrawerActions.toggleDrawer());
 }
