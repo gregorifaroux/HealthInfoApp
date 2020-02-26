@@ -6,7 +6,7 @@ import { Drawer as UIKittenDrawer, Divider } from "@ui-kitten/components";
 import { TopNavigationActionsShowcase } from "./TopNavigation";
 import { navigationRef } from "./RootNavigation";
 import { HomeScreen } from "../screens/HomeScreen";
-import { FAQScreen } from "../screens/FAQScreen";
+import { FaqScreen } from "../screens/FaqScreen";
 
 const Drawer = createDrawerNavigator();
 
@@ -30,7 +30,7 @@ export const DrawerNavigator = () => (
     drawerContent={props => <DrawerContent {...props} />}
   >
     <Drawer.Screen name="Home" component={HomeScreen} />
-    <Drawer.Screen name="FAQ" component={FAQScreen} />
+    <Drawer.Screen name="FAQ" component={FaqScreen} />
   </Drawer.Navigator>
 );
 
