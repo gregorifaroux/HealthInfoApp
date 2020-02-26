@@ -1,8 +1,13 @@
 import React, { useState } from "react";
-import { ApplicationProvider, IconRegistry } from "@ui-kitten/components";
+import { StyleSheet } from "react-native";
+import {
+  ApplicationProvider,
+  IconRegistry,
+  Layout
+} from "@ui-kitten/components";
 import { EvaIconsPack } from "@ui-kitten/eva-icons";
 import { mapping, light, dark } from "@eva-design/eva";
-import { AppNavigator } from "./src/navigation.component";
+import { AppNavigator } from "./src/navigation/Navigation";
 
 const themes = {
   light: {
@@ -17,9 +22,17 @@ const themes = {
   }
 };
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1
+    //    paddingHorizontal: 10
+  }
+});
+
 const App = () => {
   const [themeName, setThemeName] = useState("light");
   const theme = themes[themeName].theme;
+  const themeIcon = themes[themeName].icon;
 
   const changeTheme = () => {
     setThemeName(themeName === "light" ? "dark" : "light");
@@ -29,12 +42,14 @@ const App = () => {
     themeName === "light" ? themes.dark : themes.light;
 
   return (
-    <React.Fragment>
+    <>
       <IconRegistry icons={EvaIconsPack} />
       <ApplicationProvider mapping={mapping} theme={theme}>
-        <AppNavigator changeTheme={changeTheme} />
+        <Layout style={styles.container}>
+          <AppNavigator changeTheme={changeTheme} themeIcon={themeIcon} />
+        </Layout>
       </ApplicationProvider>
-    </React.Fragment>
+    </>
   );
 };
 

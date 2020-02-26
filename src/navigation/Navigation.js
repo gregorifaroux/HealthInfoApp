@@ -2,30 +2,13 @@ import React from "react";
 import { SafeAreaView } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import {
-  Drawer as UIKittenDrawer,
-  Layout,
-  Text,
-  Button,
-  Divider,
-  TopNavigation
-} from "@ui-kitten/components";
-import { TopNavigationActionsShowcase } from "./topnavigation.component";
+import { Drawer as UIKittenDrawer, Divider } from "@ui-kitten/components";
+import { TopNavigationActionsShowcase } from "./TopNavigation";
 import { navigationRef } from "./RootNavigation";
+import { HomeScreen } from "../screens/HomeScreen";
+import { FAQScreen } from "../screens/FAQScreen";
 
 const Drawer = createDrawerNavigator();
-
-const UsersScreen = () => (
-  <Layout style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-    <Text category="h1">USERS</Text>
-  </Layout>
-);
-
-const OrdersScreen = () => (
-  <Layout style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-    <Text category="h1">ORDERS</Text>
-  </Layout>
-);
 
 const DrawerContent = ({ navigation, state }) => {
   const onSelect = index => {
@@ -34,7 +17,7 @@ const DrawerContent = ({ navigation, state }) => {
 
   return (
     <UIKittenDrawer
-      data={[{ title: "Users" }, { title: "Orders" }]}
+      data={[{ title: "Home" }, { title: "FAQ" }]}
       selectedIndex={state.index}
       onSelect={onSelect}
     />
@@ -46,14 +29,17 @@ export const DrawerNavigator = () => (
     drawerPosition="right"
     drawerContent={props => <DrawerContent {...props} />}
   >
-    <Drawer.Screen name="Users" component={UsersScreen} />
-    <Drawer.Screen name="Orders" component={OrdersScreen} />
+    <Drawer.Screen name="Home" component={HomeScreen} />
+    <Drawer.Screen name="FAQ" component={FAQScreen} />
   </Drawer.Navigator>
 );
 
-export const AppNavigator = ({ changeTheme }) => (
+export const AppNavigator = ({ changeTheme, themeIcon }) => (
   <SafeAreaView style={{ flex: 1 }}>
-    <TopNavigationActionsShowcase changeTheme={changeTheme} />
+    <TopNavigationActionsShowcase
+      changeTheme={changeTheme}
+      themeIcon={themeIcon}
+    />
     <Divider />
     <NavigationContainer ref={navigationRef}>
       <DrawerNavigator />

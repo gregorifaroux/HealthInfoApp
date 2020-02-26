@@ -8,12 +8,11 @@ import * as RootNavigation from "./RootNavigation.js";
 const MenuIcon = style => <Icon {...style} name="menu-outline" />;
 const MenuAction = props => <TopNavigationAction {...props} icon={MenuIcon} />;
 
-const ThemeIcom = style => <Icon {...style} name="moon-outline" />;
-const ThemeAction = props => (
-  <TopNavigationAction {...props} icon={ThemeIcom} />
-);
-
-export const TopNavigationActionsShowcase = ({ changeTheme }) => {
+export const TopNavigationActionsShowcase = ({ changeTheme, themeIcon }) => {
+  const ThemeIcon = style => <Icon {...style} name={themeIcon} />;
+  const ThemeAction = props => (
+    <TopNavigationAction {...props} icon={ThemeIcon} />
+  );
   const renderLeftControl = () => <ThemeAction onPress={changeTheme} />;
 
   const renderRightControls = () => (
