@@ -1,14 +1,17 @@
 import React from "react";
+import { ScrollView } from "react-native";
 import { Layout, Text } from "@ui-kitten/components";
+import { CardInfo } from "../commmon/CardInfo";
+import { HomeContent } from "../content/HomeContent";
 
-export const HomeScreen = ({ navigation }) => {
-  const navigateDetails = () => {
-    navigation.navigate("Details");
-  };
-
+export const HomeScreen = () => {
+  const renderContent = ({ title, content, status }) => (
+    <CardInfo title={title} content={content} status={status} />
+  );
   return (
-    <Layout style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+    <Layout style={{ alignItems: "center", flex: 1 }}>
       <Text category="h1">Welcome !</Text>
+      <ScrollView>{HomeContent.map(renderContent)}</ScrollView>
     </Layout>
   );
 };
