@@ -17,7 +17,7 @@ export const FaqScreen = () => {
   };
 
   const renderQuestion = ({ question, answer }, index) => (
-    <>
+    <View key={index}>
       <TouchableOpacity onPress={() => onPressQuestion(index)}>
         <View style={styles.viewQuestion}>
           <View>
@@ -43,7 +43,7 @@ export const FaqScreen = () => {
           <Text>{answer}</Text>
         </Card>
       )}
-    </>
+    </View>
   );
   return (
     <>

@@ -5,8 +5,8 @@ import { CardInfo } from "../commmon/CardInfo";
 import { HomeContent } from "../content/HomeContent";
 
 export const HomeScreen = () => {
-  const renderContent = ({ title, content, status }) => (
-    <CardInfo title={title} content={content} status={status} />
+  const renderContent = ({ title, content, status }, index) => (
+    <CardInfo key={index} title={title} content={content} status={status} />
   );
   return (
     <Layout style={{ alignItems: "center", flex: 1 }}>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, StatusBar, Platform } from "react-native";
 import {
   ApplicationProvider,
   IconRegistry,
@@ -24,8 +24,9 @@ const themes = {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
-    //    paddingHorizontal: 10
+    flex: 1,
+    paddingHorizontal: 10,
+    paddingTop: Platform.OS === "ios" ? 0 : StatusBar.currentHeight
   }
 });
 
@@ -46,6 +47,7 @@ const App = () => {
       <IconRegistry icons={EvaIconsPack} />
       <ApplicationProvider mapping={mapping} theme={theme}>
         <Layout style={styles.container}>
+          <StatusBar backgroundColor="blue" barStyle="light-content" />
           <AppNavigator changeTheme={changeTheme} themeIcon={themeIcon} />
         </Layout>
       </ApplicationProvider>
