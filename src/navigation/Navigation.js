@@ -7,6 +7,10 @@ import { TopNavigationActionsShowcase } from "./TopNavigation";
 import { navigationRef } from "./RootNavigation";
 import { HomeScreen } from "../screens/HomeScreen";
 import { FaqScreen } from "../screens/FaqScreen";
+import { ClinicalProcessScreen } from "../screens/ClinicalProcess";
+import { CompoundScreen } from "../screens/Compound";
+import { ContactScreen } from "../screens/Contact";
+import { PhysicianProcessScreen } from "../screens/PhysicianProcess";
 
 const Drawer = createDrawerNavigator();
 
@@ -17,7 +21,14 @@ const DrawerContent = ({ navigation, state }) => {
 
   return (
     <UIKittenDrawer
-      data={[{ title: "Home" }, { title: "FAQ" }]}
+      data={[
+        { title: "Home" },
+        { title: "Compound" },
+        { title: "Clinical Process" },
+        { title: "Physician Process" },
+        { title: "FAQ" },
+        { title: "Contact" }
+      ]}
       selectedIndex={state.index}
       onSelect={onSelect}
     />
@@ -30,7 +41,14 @@ export const DrawerNavigator = () => (
     drawerContent={props => <DrawerContent {...props} />}
   >
     <Drawer.Screen name="Home" component={HomeScreen} />
+    <Drawer.Screen name="Compound" component={CompoundScreen} />
+    <Drawer.Screen name="Clinical Process" component={ClinicalProcessScreen} />
+    <Drawer.Screen
+      name="Physician Process"
+      component={PhysicianProcessScreen}
+    />
     <Drawer.Screen name="FAQ" component={FaqScreen} />
+    <Drawer.Screen name="Contact" component={ContactScreen} />
   </Drawer.Navigator>
 );
 
