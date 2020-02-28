@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, View, TouchableWithoutFeedback } from "react-native";
+import { StyleSheet, View, TouchableOpacity } from "react-native";
 import { Text, Card } from "@ui-kitten/components";
 
 import Animated from "react-native-reanimated";
@@ -21,7 +21,7 @@ export const Question = ({ question, answer, open, toggle, index }) => {
 
   return (
     <>
-      <TouchableWithoutFeedback onPress={() => toggle(index)}>
+      <TouchableOpacity onPress={() => toggle(index)} activeOpacity={0.7}>
         <Animated.View style={styles.viewQuestion}>
           <View>
             <Text category="s1" style={styles.text}>
@@ -32,7 +32,7 @@ export const Question = ({ question, answer, open, toggle, index }) => {
             <Chevron {...{ transition }} />
           </View>
         </Animated.View>
-      </TouchableWithoutFeedback>
+      </TouchableOpacity>
       <Animated.View style={[styles.items, { height }]}>
         <Card key={index} onLayout={onLayout}>
           <Text>{answer}</Text>
