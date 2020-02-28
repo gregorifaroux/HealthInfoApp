@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { StyleSheet, View, TouchableWithoutFeedback } from "react-native";
-import { Layout, Text, Card, Icon, Divider } from "@ui-kitten/components";
+import { Text, Card } from "@ui-kitten/components";
 
 import Animated from "react-native-reanimated";
 import { bInterpolate, useTransition } from "react-native-redash";
@@ -12,7 +12,7 @@ export const Question = ({ question, answer, open, toggle, index }) => {
   const height = bInterpolate(transition, 0, cardHeight);
 
   // To get the height of the view/card dynamically
-  const onLayout = (event, index) => {
+  const onLayout = event => {
     let h = event.nativeEvent.layout.height;
     if (h > cardHeight) {
       setCardHeight(h);
@@ -34,7 +34,7 @@ export const Question = ({ question, answer, open, toggle, index }) => {
         </Animated.View>
       </TouchableWithoutFeedback>
       <Animated.View style={[styles.items, { height }]}>
-        <Card key={index} onLayout={event => onLayout(event, index)}>
+        <Card key={index} onLayout={onLayout}>
           <Text>{answer}</Text>
         </Card>
       </Animated.View>
