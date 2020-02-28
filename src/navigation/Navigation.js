@@ -6,7 +6,7 @@ import { Drawer as UIKittenDrawer, Divider } from "@ui-kitten/components";
 import { TopNavigationActionsShowcase } from "./TopNavigation";
 import { navigationRef } from "./RootNavigation";
 import { HomeScreen } from "../screens/HomeScreen";
-import { FaqScreen } from "../screens/FaqScreen";
+import { FaqScreen } from "../screens/Faq/FaqScreen";
 import { ClinicalProcessScreen } from "../screens/ClinicalProcess";
 import { CompoundScreen } from "../screens/Compound";
 import { ContactScreen } from "../screens/Contact";
