@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { SafeAreaView } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
@@ -14,8 +14,9 @@ import { PhysicianProcessScreen } from "../screens/PhysicianProcess";
 
 const Drawer = createDrawerNavigator();
 
-const DrawerContent = ({ navigation, state }) => {
+const DrawerContent = ({ navigation, state, setNavTitle }) => {
   const onSelect = index => {
+    setNavTitle(state.routeNames[index]);
     navigation.navigate(state.routeNames[index]);
   };
 
@@ -35,12 +36,14 @@ const DrawerContent = ({ navigation, state }) => {
   );
 };
 
-export const DrawerNavigator = () => (
+export const DrawerNavigator = ({ setNavTitle }) => (
   <Drawer.Navigator
     drawerPosition="right"
-    drawerContent={props => <DrawerContent {...props} />}
+    drawerContent={props => (
+      <DrawerContent {...props} setNavTitle={setNavTitle} />
+    )}
   >
-    <Drawer.Screen name="Home" component={HomeScreen} />
+    <Drawer.Screen name="Health Info App" component={HomeScreen} />
     <Drawer.Screen name="Compound" component={CompoundScreen} />
     <Drawer.Screen name="Clinical Process" component={ClinicalProcessScreen} />
     <Drawer.Screen
@@ -52,15 +55,20 @@ export const DrawerNavigator = () => (
   </Drawer.Navigator>
 );
 
-export const AppNavigator = ({ changeTheme, themeIcon }) => (
-  <SafeAreaView style={{ flex: 1 }}>
-    <TopNavigationActionsShowcase
-      changeTheme={changeTheme}
-      themeIcon={themeIcon}
-    />
-    <Divider />
-    <NavigationContainer ref={navigationRef}>
-      <DrawerNavigator />
-    </NavigationContainer>
-  </SafeAreaView>
-);
+export const AppNavigator = ({ changeTheme, themeIcon }) => {
+  const [pageTitle, setPageTitle] = useState("Health Info App");
+
+  return (
+    <SafeAreaView style={{ flex: 1 }}>
+      <TopNavigationActionsShowcase
+        title={pageTitle}
+        changeTheme={changeTheme}
+        themeIcon={themeIcon}
+      />
+      <Divider />
+      <NavigationContainer ref={navigationRef}>
+        <DrawerNavigator setNavTitle={setPageTitle} />
+      </NavigationContainer>
+    </SafeAreaView>
+  );
+};

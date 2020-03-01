@@ -10,8 +10,14 @@ export const HomeScreen = () => {
   );
   return (
     <Layout style={{ alignItems: "center", flex: 1 }}>
-      <Text category="h1">Welcome !</Text>
-      <ScrollView>{HomeContent.map(renderContent)}</ScrollView>
+      <ScrollView>
+        <>
+          <Text category="h1" style={{ textAlign: "center" }}>
+            Welcome !
+          </Text>
+          {HomeContent.map(renderContent)}
+        </>
+      </ScrollView>
     </Layout>
   );
 };

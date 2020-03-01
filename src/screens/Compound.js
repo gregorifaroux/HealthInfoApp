@@ -16,9 +16,6 @@ export const CompoundScreen = () => {
 
   return (
     <Layout style={styles.container} level="2">
-      <Layout style={{ alignItems: "center" }}>
-        <Text category="h1">Compound</Text>
-      </Layout>
       <ScrollView>
         <ImageBackground
           style={styles.headerContainer}

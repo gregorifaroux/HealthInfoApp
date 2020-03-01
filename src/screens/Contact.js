@@ -29,9 +29,6 @@ export const ContactScreen = ({ navigation }) => {
 
   return (
     <KeyboardAvoidingView style={styles.container}>
-      <Layout style={{ alignItems: "center" }}>
-        <Text category="h1">Contact</Text>
-      </Layout>
       <View style={styles.headerContainer}>
         <Text style={styles.signInLabel} category="s1">
           Contact us any time with your questions, comments, or feedback. We

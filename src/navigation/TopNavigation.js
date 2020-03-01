@@ -8,7 +8,11 @@ import * as RootNavigation from "./RootNavigation.js";
 const MenuIcon = style => <Icon {...style} name="menu-outline" />;
 const MenuAction = props => <TopNavigationAction {...props} icon={MenuIcon} />;
 
-export const TopNavigationActionsShowcase = ({ changeTheme, themeIcon }) => {
+export const TopNavigationActionsShowcase = ({
+  title,
+  changeTheme,
+  themeIcon
+}) => {
   const ThemeIcon = style => <Icon {...style} name={themeIcon} />;
   const ThemeAction = props => (
     <TopNavigationAction {...props} icon={ThemeIcon} />
@@ -21,7 +25,7 @@ export const TopNavigationActionsShowcase = ({ changeTheme, themeIcon }) => {
 
   return (
     <TopNavigation
-      title="Health Info App"
+      title={title}
       alignment="center"
       leftControl={renderLeftControl()}
       rightControls={renderRightControls()}

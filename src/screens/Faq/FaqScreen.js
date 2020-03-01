@@ -32,9 +32,6 @@ export const FaqScreen = () => {
 
   return (
     <Layout style={styles.container}>
-      <Text style={styles.title} category="h1">
-        FAQ
-      </Text>
       <ScrollView>{FaqContent.map(renderQuestion)}</ScrollView>
     </Layout>
   );
