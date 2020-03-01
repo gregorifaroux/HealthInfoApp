@@ -34,7 +34,11 @@ export const Question = ({ question, answer, open, toggle, index }) => {
         </Animated.View>
       </TouchableOpacity>
       <Animated.View style={[styles.items, { height }]}>
-        <Card key={index} onLayout={onLayout}>
+        <Card
+          key={index}
+          onLayout={onLayout}
+          style={{ borderWidth: 0, paddingHorizontal: 0 }}
+        >
           <Text>{answer}</Text>
         </Card>
       </Animated.View>
