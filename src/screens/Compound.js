@@ -1,8 +1,6 @@
 import React from "react";
-import { ImageBackground, ScrollView } from "react-native";
+import { ScrollView } from "react-native";
 import {
-  Avatar,
-  Button,
   Card,
   Layout,
   StyleService,
@@ -10,6 +8,7 @@ import {
   useStyleSheet
 } from "@ui-kitten/components";
 import backgroundImage from "../../assets/compound.png";
+import { ImageOverlay } from "./image-overlay.component";
 
 export const CompoundScreen = () => {
   const styles = useStyleSheet(themedStyles);
@@ -17,10 +16,12 @@ export const CompoundScreen = () => {
   return (
     <Layout style={styles.container} level="2">
       <ScrollView>
-        <ImageBackground
-          style={styles.headerContainer}
-          source={backgroundImage}
-        />
+        <ImageOverlay style={styles.headerContainer} source={backgroundImage}>
+          <Text style={styles.headerTitle} category="h1" status="control">
+            Compound
+          </Text>
+        </ImageOverlay>
+
         <Card>
           <Text>
             The compound is an antimicrobial mineral complex that acts against
@@ -50,6 +51,14 @@ const themedStyles = StyleService.create({
   },
   headerContainer: {
     height: 192,
+    zIndex: 1
+  },
+  headerTitle: {
+    textAlign: "center",
+    marginVertical: 24,
+    zIndex: 1
+  },
+  headerDescription: {
     zIndex: 1
   },
   authorPhoto: {
